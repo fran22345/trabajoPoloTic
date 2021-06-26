@@ -1,0 +1,16 @@
+{% extends "trabajoFinalApp/base.html" %}
+
+{% block content %}
+<form style="margin: 10%" method="POST">
+    {% csrf_token %}
+    {% for p in form %}
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">{{p.label}}</label>
+        {{p}}
+    </div>
+    {% endfor %}
+    <div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>
+{% endblock %}

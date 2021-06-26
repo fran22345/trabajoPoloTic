@@ -1,0 +1,24 @@
+{% extends "trabajoFinalApp/base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <h3>Registrate en nuestra web</h3>
+</div>
+<div class="card-body d-flex justify-content-center">
+    <form class="form border border-black" method="POST" style="padding: 10%;">
+        {% csrf_token %}
+        {% for p in form %}
+        <div class="form">
+            <div class="d-flex align-items-start">
+                <label for="Email" class="form-label">{{p.label}}</label>
+            </div>
+            <div class="d-flex align-items-end">
+                {{p}}
+            </div>
+        </div>
+        {% endfor %}
+        <br>
+        <button class="btn btn-primary" type="submit">Registrar</button>
+    </form>
+</div>
+{% endblock %}

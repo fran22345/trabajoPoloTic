@@ -1,0 +1,17 @@
+{% extends "trabajoFinalApp/base.html" %}
+
+{% block content %}
+<br><br><br>
+<div>
+    <form class="container-sm" method="POST" style="width: 10cm; margin-bottom: 17%;">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"> </label>
+            {{form}}
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

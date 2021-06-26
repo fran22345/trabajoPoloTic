@@ -1,0 +1,36 @@
+{% extends "trabajoFinalApp/base.html" %}
+
+{% block content %}
+
+<br>
+<div class="card-body">
+    <form action="" method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div class="form-control">
+            <div  class="d-flex flex-column bd-highlight mb-3">
+                <label for="Titulo">Titulo</label>
+                {{ productos.Titulo}}
+            </div>
+            <div  class="d-flex flex-column bd-highlight mb-3">
+                <label for="Categoria">Categoria</label>
+                {{ productos.Categoria}}
+            </div>
+            <div class="d-flex flex-column bd-highlight mb-3">
+                <label for="Descripcion">Descripcion</label>
+                {{ productos.Descripcion}}
+            </div>
+            <div class="d-flex flex-column bd-highlight mb-3">
+                <label for="Precio">Precio</label>
+                {{ productos.Precio}}
+            </div>
+            <div class="d-flex flex-column bd-highlight mb-3">
+                <label for="Imagen">Imagen</label>
+                {{ productos.Imagen}}
+            </div>
+        </div>
+<br>
+        <input type="submit" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock %}

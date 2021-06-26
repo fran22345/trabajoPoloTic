@@ -1,0 +1,36 @@
+{% extends "trabajoFinalApp/base.html" %}
+
+{% block content %}
+
+<div class="card-group">
+    {% for p in lista %}
+    <div class="card">
+        {% if p.Imagen %}
+        <img src="{{ p.Imagen.url }}" alt="" style="width: auto; height: 200px;">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{p.Titulo}}</h5>
+            <hr>
+            <p class="card-text">{{p.Categoria}}</p>
+            <hr>
+            <p class="card-text">{{p.Descripcion}}</p>
+            <p class="card-text">${{p.Precio}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br><br>
+<div class="list-group">
+    {% for p in lista2 %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">{{p.Titulo}}</h4>
+            <h5 class="mb-1">{{p.Categoria}}</h5>
+        </div>
+        <p class="mb-1">{{p.Descripcion}}.</p>
+        <small class="text-muted">{{p.Precio}}</small>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
