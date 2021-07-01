@@ -1,8 +1,20 @@
 {% extends "trabajoFinalApp/base.html" %}
 
 {% block content %}
-
-
-
+<div class="list-group">
+    {% for p in lista %}
+    <form action="{% url 'solo' %}" method="GET">
+        <input type="hidden" value="{{p.id}}" name="busqueda">
+        <button type="submit" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">{{p.Titulo}}</h4>
+                <h5 class="mb-1">{{p.Categoria}}</h5>
+            </div>
+            <p class="mb-1">{{p.Descripcion}}.</p>
+            <small class="text-muted">{{p.Precio}}</small>
+        </button>
+    </form>
+    {% endfor %}
+</div>
 
 {% endblock %}

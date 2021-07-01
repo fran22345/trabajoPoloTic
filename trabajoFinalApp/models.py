@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 CATEGORIA = [
             ('autos', 'AUTOS'),
@@ -27,3 +27,12 @@ class Contacto(models.Model):
 
     def __str__(self):
         return self.Mail
+
+class CarritoUs(models.Model):
+    UsuarioIdent= models.CharField(max_length=50)
+    Titulo = models.CharField(max_length=50)
+    Categoria = models.CharField(max_length=50, choices=CATEGORIA, default='default')
+    Descripcion = models.TextField()
+    Precio = models.IntegerField()
+    def __str__(self):
+        return self.UsuarioIdent

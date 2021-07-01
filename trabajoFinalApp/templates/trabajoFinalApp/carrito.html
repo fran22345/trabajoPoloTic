@@ -1,7 +1,24 @@
 {% extends "trabajoFinalApp/base.html" %}
 
 {% block content %}
-
-
-
+<div>
+  <h2>Carrito de compras</h2>
+</div><br>
+<div class="d-flex justify-content-end">
+  <a href="{% url 'borrarTodo' %}" class="btn btn-dark">Eliminar todo</a>
+</div>
+{% for p in lista %}
+<h5 class="card-header">{{p.Titulo}}</h5>
+<div class="card d-flex flex-row bd-highlight mb-3" style="margin: 50px;">
+  <div class="card-body p-2 bd-highlight">
+    <p class="card-title">{{p.Descripcion}}</p>
+    <h5 class="card-text">${{p.Precio}}</h5>
+  </div>
+  <div class="p-2 bd-highlight" style="margin: 20px;">
+    <div class="d-flex justify-content-end">
+      <a href="{% url 'borrar' p.id %}" class="btn btn-danger">Eliminar</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}

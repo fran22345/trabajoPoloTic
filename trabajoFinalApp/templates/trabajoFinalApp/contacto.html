@@ -1,16 +1,25 @@
 {% extends "trabajoFinalApp/base.html" %}
 
 {% block content %}
-<form style="margin: 10%" method="POST">
-    {% csrf_token %}
-    {% for p in form %}
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">{{p.label}}</label>
-        {{p}}
-    </div>
+{% if messages %}
+<div class="messages alert alert-success" role="alert">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" style='text-align: center;' {% endif %}>{{ message }}</div>
     {% endfor %}
-    <div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </div>
-</form>
+</div>
+{% endif %}
+<div class="card" style="align-items: center; margin: 3cm;">
+    <form method="POST">
+        {% csrf_token %}
+            <label for="">Ingrese su Email</label>
+            <div class="mb-3">
+                {{form.Mail}}
+            </div>
+            <label for="">Ingrese su Mensaje</label>
+            <div class="mb-3">
+                {{form.Mensaje}}
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
 {% endblock %}

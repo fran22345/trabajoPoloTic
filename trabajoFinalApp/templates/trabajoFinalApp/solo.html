@@ -1,0 +1,38 @@
+{% extends "trabajoFinalApp/base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 18rem;">
+    <img src="{{ lista.Imagen.url }}" alt="" style="width: auto; height: 200px;">
+    <div class="card-body">
+      <h5 class="card-title">{{lista.Titulo}}</h5>
+      <p class="card-text">{{lista.Descripcion}}.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${{lista.Precio}}</li>
+    </ul>
+    <div class="card-body">
+      <form method="POST" action="{% url 'solo' %}">
+        {% csrf_token %}
+        <input type="hidden" name="UsuarioIdent" value="{{user.username}}">
+        <input type="hidden" name="Titulo" value="{{lista.Titulo}}">
+        <input type="hidden" name="Categoria" value="{{lista.Categoria}}">
+        <input type="hidden" name="Descripcion" value="{{lista.Descripcion}}">
+        <input type="hidden" name="Precio" value="{{lista.Precio}}">
+        {% if not user.is_superuser %}
+        <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+        {% endif %}
+      </form>
+    </div>
+    
+    {% if perms.trabajoFinalApp.add_producto %}
+    <di class="d-flex justify-content-center">
+        <a href="{% url 'modificar' lista.id %}" class="btn btn-dark">Modificar</a>
+        &nbsp;
+        &nbsp;
+        <a href="{% url 'borrar_prod' lista.id %}" class="btn btn-danger">Eliminar</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

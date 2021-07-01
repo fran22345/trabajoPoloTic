@@ -14,22 +14,32 @@
             <p class="card-text">{{p.Categoria}}</p>
             <hr>
             <p class="card-text">{{p.Descripcion}}</p>
-            <p class="card-text">${{p.Precio}}</p>
+            <hr>
+            <h5 class="card-text">${{p.Precio}}</h5>
+            <hr>
+            <form action="{% url 'solo' %}">
+                <input type="hidden" value="{{p.id}}" name="busqueda">
+                <button type="submit" class="btn btn-primary">Ver producto</button>
+            </form>
         </div>
     </div>
     {% endfor %}
-</div>
+</div><hr><br>
+<h2 style="text-align: center; text-decoration: underline ;">M&aacute;s Productos</h2>
 <br><br>
 <div class="list-group">
     {% for p in lista2 %}
-    <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h4 class="mb-1">{{p.Titulo}}</h4>
-            <h5 class="mb-1">{{p.Categoria}}</h5>
-        </div>
-        <p class="mb-1">{{p.Descripcion}}.</p>
-        <small class="text-muted">{{p.Precio}}</small>
-    </a>
+    <form action="{% url 'solo' %}" method="GET">
+        <input type="hidden" value="{{p.id}}" name="busqueda">
+        <button type="submit" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">{{p.Titulo}}</h4>
+                <h5 class="mb-1">{{p.Categoria}}</h5>
+            </div>
+            <p class="mb-1">{{p.Descripcion}}.</p>
+            <small class="text-muted">{{p.Precio}}</small>
+        </button>
+    </form>
     {% endfor %}
 </div>
 

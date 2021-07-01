@@ -10,4 +10,9 @@ urlpatterns = [
     path('registro/',views.registro, name="registro"),
     path('carrito/',views.carrito, name="carrito"),
     path('contacto/',views.contacto, name="contacto"),
+    path('solo/', views.solo, name="solo"),
+    path('borrar/<id>/',views.borrar, name="borrar"),
+    path('borrar/',views.borrarTodo, name="borrarTodo"),
+    path('borrar_prod/<id>/',views.borrarProd, name="borrar_prod"),
+    path('modificar/<id>/',views.modificar, name="modificar")
 ]
